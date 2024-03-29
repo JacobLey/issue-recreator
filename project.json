@@ -1,0 +1,17 @@
+{
+    "$schema": "./node_modules/nx/schemas/project-schema.json",
+    "name": "example",
+    "targets": {
+        "a": {
+          "executor": "nx:noop"
+        },
+        "b": {
+          "executor": "nx:noop"
+        },
+        "c": {
+          "executor": "nx:noop",
+          "dependsOn": ["a", "b"]
+        }
+      
+    }
+  }
