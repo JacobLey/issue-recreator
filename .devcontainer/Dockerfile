@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/devcontainers/base:debian
 
-ARG NODE_VERSION=20.11.1
+ARG NODE_VERSION=20.12.2
 ARG PNPM_VERSION=9.0.2
 
 RUN apt-get update \
