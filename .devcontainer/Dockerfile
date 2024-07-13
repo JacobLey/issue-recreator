@@ -1,7 +1,8 @@
 FROM mcr.microsoft.com/devcontainers/base:debian
 
-ARG NODE_VERSION=20.11.1
-ARG PNPM_VERSION=9.0.2
+ARG NX_VERSION=19.5.0-beta.2
+ARG NODE_VERSION=22.4.1
+ARG PNPM_VERSION=9.5.0
 
 RUN apt-get update \
     && apt-get upgrade -y \
@@ -31,4 +32,5 @@ RUN \. "$NVM_DIR/nvm.sh" && \
     corepack prepare "pnpm@${PNPM_VERSION}" --activate
 
 # Install packages
-RUN \. "$NVM_DIR/nvm.sh"
+RUN \. "$NVM_DIR/nvm.sh" && \
+    pnpm i -g "nx@${NX_VERSION}"

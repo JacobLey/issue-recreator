@@ -1,0 +1,16 @@
+{
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "name": "baz",
+    "targets": {
+        "print-pwd": {
+            "executor": "nx:run-commands",
+            "options": {
+                "commands": [
+                    "pwd"
+                ],
+                "color": true,
+                "cwd": "{projectRoot}"
+            }
+        }
+    }
+}
