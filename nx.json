@@ -1,0 +1,50 @@
+{
+    "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "cli": { "packageManager": "pnpm" },
+    "targetDefaults": {
+
+        "build-impl": {
+            "executor": "nx:run-commands",
+            "options": {
+              "commands": ["sleep 1", "echo BUILD"],
+              "color": true,
+              "cwd": "{projectRoot}"
+            },
+            "dependsOn": ["build:_"]
+        },
+        "test-impl": {
+            "executor": "nx:run-commands",
+            "options": {
+              "commands": ["sleep 1", "echo TEST"],
+              "color": true,
+              "cwd": "{projectRoot}"
+            },
+            "dependsOn": ["test:_"]
+        },
+        "report-impl": {
+            "executor": "nx:run-commands",
+            "options": {
+              "commands": ["sleep 1", "echo REPORT"],
+              "color": true,
+              "cwd": "{projectRoot}"
+            },
+            "dependsOn": ["test:_", "test-impl"]
+        },
+
+        "build": {
+            "executor": "nx:noop",
+            "dependsOn": ["build:_", "build-impl"]
+        },
+        "build:_": {
+            "executor": "nx:noop"
+        },
+        "test": {
+            "executor": "nx:noop",
+            "dependsOn": ["test:_", "test-impl", "report-impl"]
+        },
+        "test:_": {
+            "executor": "nx:noop",
+            "dependsOn": ["build"]
+        }
+    }
+}

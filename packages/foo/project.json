@@ -1,0 +1,22 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "foo",
+  "targets": {
+    
+    "build-impl": {},
+    "test-impl": {},
+    "report-impl": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["echo REPORT"],
+        "color": true,
+        "cwd": "{projectRoot}"
+      }
+    },
+
+    "build": {},
+    "build:_": {},
+    "test": {},
+    "test:_": {}
+  }
+}
