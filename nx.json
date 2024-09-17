@@ -2,7 +2,13 @@
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
     "cli": { "packageManager": "pnpm" },
     "targetDefaults": {
-
+        "a": {
+            "executor": "nx:noop"
+        },
+        "b": {
+            "executor": "nx:noop",
+            "dependsOn": ["a"]
+        },
         "build-impl": {
             "executor": "nx:run-commands",
             "options": {

@@ -1,8 +1,8 @@
 FROM mcr.microsoft.com/devcontainers/base:debian
 
-ARG NX_VERSION=19.4.3
-ARG NODE_VERSION=22.4.1
-ARG PNPM_VERSION=9.5.0
+ARG NX_VERSION=19.6.4
+ARG NODE_VERSION=22.7.0
+ARG PNPM_VERSION=9.9.0
 
 RUN apt-get update \
     && apt-get upgrade -y \
