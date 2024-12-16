@@ -1,0 +1,41 @@
+{
+    // Exact same as .swc, just with module.resolveFully = false
+    "$schema": "https://swc.rs/schema.json",
+    "isModule": true,
+    // Force emitting source maps
+    "sourceMaps": true,
+    "inlineSourcesContent": false,
+    "jsc": {
+      "target": "esnext",
+      "externalHelpers": true,
+      "baseUrl": ".",
+      "parser": {
+        "syntax": "typescript",
+        "decorators": false,
+        "dynamicImport": true,
+        "tsx": true
+      },
+      "transform": {
+        "react": {
+          // Use `__jsx` instead of `React`
+          "runtime": "automatic"
+        }
+      },
+      "experimental": {
+        "keepImportAttributes": true
+      },
+      // Removes comments
+      "minify": {
+        "compress": false,
+        "mangle": false
+      }
+    },
+    "module": {
+      "type": "nodenext",
+      "strict": true,
+      "strictMode": true,
+      "resolveFully": false,
+      "ignoreDynamic": true
+    }
+  }
+  
