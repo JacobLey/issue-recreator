@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/devcontainers/base:debian
 
-ARG NODE_VERSION=20.11.1
-ARG PNPM_VERSION=9.0.2
+ARG NODE_VERSION=22.12.0
+ARG PNPM_VERSION=9.15.0
 
 RUN apt-get update \
     && apt-get upgrade -y \
@@ -24,11 +24,6 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | ba
     npm uninstall -g npm
 
 # Install pnpm
-ENV PNPM_HOME="${HOME}/.local/share/pnpm"
-ENV PATH="${PNPM_HOME}:${PATH}"
-RUN \. "$NVM_DIR/nvm.sh" && \
-    corepack enable && \
-    corepack prepare "pnpm@${PNPM_VERSION}" --activate
-
-# Install packages
-RUN \. "$NVM_DIR/nvm.sh"
+ENV PNPM_HOME="$HOME/.local/share/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=$PNPM_VERSION SHELL=bash sh -
