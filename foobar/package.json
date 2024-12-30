@@ -1,0 +1,9 @@
+{
+    "name": "foobar",
+    "type": "module",
+    "version": "1.2.3",
+    "dependencies": {
+        "bar": "workspace:^",
+        "foo": "workspace:^"
+    }
+}

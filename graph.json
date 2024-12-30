@@ -1,0 +1,155 @@
+{
+  "graph": {
+    "nodes": {
+      "foobar": {
+        "name": "foobar",
+        "type": "lib",
+        "data": {
+          "root": "foobar",
+          "sourceRoot": "foobar",
+          "name": "foobar",
+          "tags": [
+            "npm:public"
+          ],
+          "metadata": {
+            "targetGroups": {},
+            "js": {
+              "packageName": "foobar"
+            }
+          },
+          "targets": {
+            "nx-release-publish": {
+              "executor": "@nx/js:release-publish",
+              "dependsOn": [
+                "^nx-release-publish"
+              ],
+              "options": {},
+              "configurations": {},
+              "parallelism": true
+            },
+            "echo": {
+              "configurations": {},
+              "options": {
+                "commands": [
+                  "echo hello world"
+                ]
+              },
+              "parallelism": true,
+              "executor": "nx:run-commands",
+              "dependsOn": [
+                "^echo"
+              ]
+            }
+          },
+          "$schema": "https://raw.githubusercontent.com/nrwl/nx/refs/heads/master/packages/nx/schemas/project-schema.json",
+          "implicitDependencies": []
+        }
+      },
+      "bar": {
+        "name": "bar",
+        "type": "lib",
+        "data": {
+          "root": "bar",
+          "sourceRoot": "bar",
+          "name": "bar",
+          "tags": [
+            "npm:public"
+          ],
+          "metadata": {
+            "targetGroups": {},
+            "js": {
+              "packageName": "bar",
+              "packageExports": {
+                "./bar": "./bar.js"
+              }
+            }
+          },
+          "targets": {
+            "nx-release-publish": {
+              "executor": "@nx/js:release-publish",
+              "dependsOn": [
+                "^nx-release-publish"
+              ],
+              "options": {},
+              "configurations": {},
+              "parallelism": true
+            },
+            "echo": {
+              "configurations": {},
+              "options": {
+                "commands": [
+                  "echo hello world"
+                ]
+              },
+              "parallelism": true,
+              "executor": "nx:run-commands",
+              "dependsOn": [
+                "^echo"
+              ]
+            }
+          },
+          "$schema": "https://raw.githubusercontent.com/nrwl/nx/refs/heads/master/packages/nx/schemas/project-schema.json",
+          "implicitDependencies": []
+        }
+      },
+      "foo": {
+        "name": "foo",
+        "type": "lib",
+        "data": {
+          "root": "foo",
+          "sourceRoot": "foo",
+          "name": "foo",
+          "tags": [
+            "npm:public"
+          ],
+          "metadata": {
+            "targetGroups": {},
+            "js": {
+              "packageName": "foo",
+              "packageExports": {
+                ".": "./foo.js"
+              }
+            }
+          },
+          "targets": {
+            "nx-release-publish": {
+              "executor": "@nx/js:release-publish",
+              "dependsOn": [
+                "^nx-release-publish"
+              ],
+              "options": {},
+              "configurations": {},
+              "parallelism": true
+            },
+            "echo": {
+              "configurations": {},
+              "options": {
+                "commands": [
+                  "echo hello world"
+                ]
+              },
+              "parallelism": true,
+              "executor": "nx:run-commands",
+              "dependsOn": [
+                "^echo"
+              ]
+            }
+          },
+          "$schema": "https://raw.githubusercontent.com/nrwl/nx/refs/heads/master/packages/nx/schemas/project-schema.json",
+          "implicitDependencies": []
+        }
+      }
+    },
+    "dependencies": {
+      "foobar": [
+        {
+          "source": "foobar",
+          "target": "foo",
+          "type": "static"
+        }
+      ],
+      "bar": [],
+      "foo": []
+    }
+  }
+}

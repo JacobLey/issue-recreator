@@ -7,3 +7,16 @@ settings:
 importers:
 
   .: {}
+
+  bar: {}
+
+  foo: {}
+
+  foobar:
+    dependencies:
+      bar:
+        specifier: workspace:^
+        version: 'link:'
+      foo:
+        specifier: workspace:^
+        version: link:../foo

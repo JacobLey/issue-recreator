@@ -1,6 +1,7 @@
 FROM mcr.microsoft.com/devcontainers/base:debian
 
 ARG NODE_VERSION=22.12.0
+ARG NX_VERSION=20.3.0
 ARG PNPM_VERSION=9.15.2
 
 RUN apt-get update \
@@ -28,3 +29,6 @@ ENV PATH="$HOME/.nvm/versions/node/v$NODE_VERSION/bin:$PATH"
 ENV PNPM_HOME="$HOME/.local/share/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=$PNPM_VERSION SHELL=bash sh -
+
+# Install packages
+RUN pnpm i -g "nx@${NX_VERSION}"

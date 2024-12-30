@@ -1,0 +1,19 @@
+{
+    "$schema": "https://raw.githubusercontent.com/nrwl/nx/refs/heads/master/packages/nx/schemas/nx-schema.json",
+    "cli": {
+        "packageManager": "pnpm"
+    },
+    "targetDefaults": {
+        "echo": {
+            "executor": "nx:run-commands",
+            "options": {
+                "commands": [
+                    "echo hello world"
+                ]
+            },
+            "dependsOn": [
+                "^echo"
+            ]
+        }
+    }
+}
