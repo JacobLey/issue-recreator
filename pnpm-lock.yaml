@@ -16,7 +16,7 @@ importers:
     dependencies:
       bar:
         specifier: workspace:^
-        version: 'link:'
+        version: link:../bar
       foo:
         specifier: workspace:^
         version: link:../foo
