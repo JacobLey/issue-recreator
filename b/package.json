@@ -1,0 +1,11 @@
+{
+    "name": "b",
+    "version": "0.0.1",
+    "type": "module",
+    "exports": {
+        ".": "./b.js"
+    },
+    "peerDependencies": {
+        "a": "file:../a/a-0.0.1.tgz"
+    }
+}

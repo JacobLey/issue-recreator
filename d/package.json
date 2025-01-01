@@ -1,0 +1,11 @@
+{
+    "name": "d",
+    "version": "0.0.1",
+    "type": "module",
+    "exports": {
+        ".": "./d.js"
+    },
+    "dependencies": {
+        "c": "file:../c/c-0.0.1.tgz"
+    }
+}

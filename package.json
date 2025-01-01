@@ -1,5 +1,8 @@
 {
     "name": "issue-recreator",
     "type": "module",
-    "devDependencies": {}
+    "devDependencies": {
+        "nx": "20.3.0",
+        "nx-update-ts-references": "0.1.1"
+    }
 }

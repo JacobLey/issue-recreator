@@ -1,0 +1,12 @@
+{
+    "name": "c",
+    "version": "0.0.1",
+    "type": "module",
+    "exports": {
+        ".": "./c.js"
+    },
+    "dependencies": {
+        "custom-a": "file:../a/a-0.0.1.tgz",
+        "b": "file:../b/b-0.0.1.tgz"
+    }
+}
