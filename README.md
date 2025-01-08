@@ -2,9 +2,13 @@
 
 pnpm will flag a peer dependency as missing if:
 
-* The package with the peer dependency is the one being installed (in this recreation, that is the [b](./b/package.json) packagem, declaring a peer dependency on [a](./a/package.json))
-* The package _installing_ the peer dependency, installs it under an alias (in this recreation, that is [c](./c/package.json), which installs both `b` and `a` as an aliased `custom-a`)
-* This package is yet again installed by _another_ package. (in this recreation, that is [d](./d/package.json))
+* The package with the peer dependency is the one being installed
+  * in this recreation, that is the [b](./b/package.json) packagem, declaring a peer dependency on `eslint`
+  * Eslint is not "special" in this recreation. Virutally any package could be used for demonstration, but it is a common package to be referenced in peer dependencies.
+* The package _installing_ the peer dependency, installs it under an alias
+  * in this recreation, that is [c](./c/package.json), which installs both `b` and `eslint` as an aliased `custom-eslint`.
+* This package is yet again installed by _another_ package.
+  * in this recreation, that is [d](./d/package.json)
 
 ## Steps to reproduce
 
@@ -21,29 +25,23 @@ Peer dependencies that should be installed:
   a@file:../a/a-0.0.1.tgz
 ```
 3. `pnpm --filter "./d" exec node ./d.js`
-   * logs: `{ c: { b: { a: 'A' } } }`
+   * logs: `{ c: { eslint: [Object] } } }`
    * The command is successful! So the peer dependency must actually exist, and therefore be a false positive.
 
 ## Repo explained
 
-There are 4 packages in this reproduction.
+There are 3 packages in this reproduction.
 
-* [a](./a/package.json)
-  * This is a noop package, it exports a single variable `a = 'A'`
-  * It could be replaced with a "real" package, like express, but that brings in more dependencies which creates noise (but does not impact result).
 * [b](./b/package.json)
-  * This package imports `a` and re-exports with a wrapped `b = { a }`.
-  * `a` is a peer dependency. It is not installed directly, and as a result the `b` package has no `node_modules` file.
+  * This package imports `eslint` and re-exports with a wrapped `b = { eslint }`.
+  * `eslint` is a peer dependency. It is not installed directly, and as a result the `b` package has no `node_modules` file.
 * [c](./c/package.json)
-  * This package imports both `a` and `b`, although `a` is aliased as a different name `custom-a`. The resolution is the same though. 
+  * This package imports both `eslint` and `b`, although `eslint` is aliased as a different name `custom-eslint`. The resolution is the same though. 
   * It re-exports b with a wrapped `c = { b }`. This should only be possible if `b` is successfully loaded, which in turn means the peer dependency was satisfied.
 * [d](./d/package.json)
   * This package imports `c` normally. Nothing is suspicious about this package directly, but it is the source of our error!
 
 ## Real world equivalent
-
-The `a` package could be replaced by virually anything. A common package may be something like `eslint` if you are creating a plugin.
-When disovering this issue, that was my [haywire](https://github.com/JacobLey/leyman/tree/main/tools/haywire) + [entry-script](https://github.com/JacobLey/leyman/tree/main/tools/entry-script) packages.
 
 The `b` package would be the actual plugin implementation. It needs to depend on eslint, but shouldn't bring it's own implemention, since it needs to be an exact match for the user's version.
 When discovering this issue, that was my [haywire-launcher](https://github.com/JacobLey/leyman/blob/main/tools/haywire-launcher/package.json#L28-L29) package

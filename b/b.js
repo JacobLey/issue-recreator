@@ -1,3 +1,3 @@
-import { a } from 'a';
+import eslint from 'eslint';
 
-export const b = { a };
+export const b = { eslint };

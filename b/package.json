@@ -6,6 +6,6 @@
         ".": "./b.js"
     },
     "peerDependencies": {
-        "a": "file:../a/a-0.0.1.tgz"
+        "eslint": "^9.17.0"
     }
 }
