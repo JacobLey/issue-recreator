@@ -1,0 +1,25 @@
+{
+  "$schema": "https://docs.dagger.io/reference/dagger.schema.json",
+  "name": "no-foo-or-bar",
+  "engineVersion": "v0.15.3",
+  "sdk": "go",
+  "include": [
+    "go.mod",
+    "go.sum",
+    "main.go"
+  ],
+  "dependencies": [
+    {
+      "name": "no-bar",
+      "source": "../no-bar"
+    },
+    {
+      "name": "no-foo",
+      "source": "../no-foo"
+    }
+  ],
+  "source": ".",
+  "codegen": {
+    "automaticGitignore": false
+  }
+}
