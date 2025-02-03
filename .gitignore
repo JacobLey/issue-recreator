@@ -9,3 +9,7 @@
 
 .nx/**
 !.nx/package.json
+
+dagger/**/.gitattributes
+dagger/**/dagger.gen.go
+dagger/**/internal

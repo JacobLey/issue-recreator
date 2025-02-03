@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.dagger.io/reference/dagger.schema.json",
+  "name": "exponential-delay",
+  "engineVersion": "v0.15.3",
+  "sdk": "go",
+  "include": [
+    "go.mod",
+    "go.sum",
+    "main.go"
+  ],
+  "dependencies": [
+    {
+      "name": "delay",
+      "source": "../delay"
+    }
+  ],
+  "source": ".",
+  "codegen": {
+    "automaticGitignore": false
+  }
+}

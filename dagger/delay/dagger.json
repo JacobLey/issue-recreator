@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.dagger.io/reference/dagger.schema.json",
+  "name": "delay",
+  "engineVersion": "v0.15.3",
+  "sdk": "go",
+  "include": [
+    "go.mod",
+    "go.sum",
+    "main.go"
+  ],
+  "source": ".",
+  "codegen": {
+    "automaticGitignore": false
+  }
+}
